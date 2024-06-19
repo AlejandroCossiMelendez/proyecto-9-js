@@ -80,22 +80,13 @@
     <!--Header-->
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#"><img src="img/logo.png" alt="" width="32px"> App JavaScript</a>
-
       <ul class="navbar-nav flex-row d-md-none">
-        <li class="nav-item text-nowrap">
-          <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-            <i class="bi bi-search"></i>
-          </button>
-        </li>
         <li class="nav-item text-nowrap">
           <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-list"></i>
           </button>
         </li>
       </ul>
-      <div id="navbarSearch" class="navbar-search w-100 collapse">
-        <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Buscar.." aria-label="Search">
-      </div>
     </header>
     <!--Fin Header-->
 
@@ -166,15 +157,33 @@
             <div id="app_js_1" class="row d-flex justify-content-center align-items-center">
               <div class="col-md-10 py-5">
                 <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-                  <h3>Calcular Edad</h3>
-                  <h5>47. Diseñar un algoritmo que identifique si una persona es niño, joven, adulto o adulto mayor. Para lo cual debe leer su edad.</h5>
-                  <!-- Explicación de categorías de edad -->
-                  <p>Si la edad es menor o igual a 12 años, el algoritmo debe indicar "Eres un niño"</p>
-                  <p>Si la edad es mayor a 12 años y menor o igual a 40 años, el algoritmo debe indicar "Eres un joven"</p>
-                  <p>Si la edad es mayor a 40 años y menor o igual a 60 años, el algoritmo debe indicar "Eres un adulto"</p>
-                  <p>Si la edad es mayor a 60 años el algoritmo debe indicar "Eres un adulto mayor"</p>
+                  <h3 class="mb-3">Calcular Edad</h3>
+                  <h5 class="mb-5">Diseñar un algoritmo que identifique si una persona es niño, joven, adulto o adulto mayor.</h5>
+                  <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Mas Información
+                  </button>
+                  <!-- Button trigger modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Instrucciones de Desarrollo: </h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <!-- Explicación de categorías de edad -->
+                          <p>Si la edad es menor o igual a 12 años, el algoritmo debe indicar "Eres un niño"</p>
+                          <p>Si la edad es mayor a 12 años y menor o igual a 40 años, el algoritmo debe indicar "Eres un joven"</p>
+                          <p>Si la edad es mayor a 40 años y menor o igual a 60 años, el algoritmo debe indicar "Eres un adulto"</p>
+                          <p>Si la edad es mayor a 60 años el algoritmo debe indicar "Eres un adulto mayor"</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <!-- Campo de entrada para la edad -->
-                  <h6>Ingrese la edad:</h6>
                   <div class="form-floating mb-3">
                     <input type="number" class="form-control" id="edad" placeholder="Edad">
                     <label for="edad">Edad</label>
@@ -194,17 +203,16 @@
                   <h3>Calcular Peso y Estatura</h3>
                   <!-- Explicación del formulario -->
                   <div class="row mb-4 mt-4">
-                    <h5>48. Diseñe un algoritmo que simule las siguientes tabla:</h5>
+                    <h5>Diseñe un algoritmo que simule las siguientes tabla:</h5>
                     <!-- Imágenes -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                      <img class="rounded-3" src="img/img-1-app-2.png" alt="Img Hombre">
+                      <img class="rounded-4" src="img/img-1-app-2.png" alt="Img Hombre">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                      <img class="rounded-3" src="img/img-2-app-2.png" alt="Img Mujer">
+                      <img class="rounded-4" src="img/img-2-app-2.png" alt="Img Mujer">
                     </div>
                   </div>
                   <!-- Campos de entrada para sexo y edad -->
-                  <h6>Rellene el formulario:</h6>
                   <div class="form-floating mb-3">
                     <select class="form-select" id="sexo">
                       <option value="">-Seleccione-</option>
@@ -232,21 +240,20 @@
                   <h3>Calcular IMC</h3>
                   <!-- Explicación del formulario -->
                   <div class="row mb-4 mt-4">
-                    <h5>49. Diseñe un algoritmo que simule la siguiente gráfica:</h5>
+                    <h5>Diseñe un algoritmo que simule la siguiente gráfica:</h5>
                     <!-- Imagen -->
                     <div class="col-md-12 mb-4 mt-4">
                       <img class="objet-fit img-fluid rounded-3" src="img/imc-app.PNG" alt="">
                     </div>
                   </div>
                   <!-- Campos de entrada para peso y estatura -->
-                  <h6>Rellene el formulario:</h6>
                   <div class="form-floating mb-3">
                     <input type="number" class="form-control" id="peso" placeholder="Peso en kg">
                     <label for="peso">Peso en kg</label>
                   </div>
                   <div class="form-floating mb-3">
                     <input type="number" class="form-control" id="estatura" placeholder="Estatura en metros">
-                    <label for="estatura">Estatura en metros</label>
+                    <label for="estatura">Estatura en cm</label>
                   </div>
                   <!-- Botón para calcular -->
                   <button onclick="calcularIMCC()" class="w-100 btn btn-lg btn-primary" type="button">Calcular</button>
@@ -261,7 +268,7 @@
               <div class="col-md-10 py-5">
                 <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
                   <h3>Presión Arterial</h3>
-                  <h5>50. Diseñe un algoritmo que simule la siguiente gráfica:</h5>
+                  <h5>Diseñe un algoritmo que simule la siguiente gráfica:</h5>
                   <!-- Imagen -->
                   <div class="row mb-4 mt-3">
                     <div class="col-md-12">
@@ -269,7 +276,6 @@
                     </div>
                   </div>
                   <!-- Campo de entrada para la presión sistólica -->
-                  <h6>Rellene el formulario:</h6>
                   <div class="form-floating mb-3">
                     <input type="number" class="form-control" id="presionSistolica" placeholder="Presión Sistólica">
                     <label for="presionSistolica">Ingrese la presión actual:</label>
@@ -288,31 +294,74 @@
                 <form id="FormularioCalc" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
                   <h1>Calculadora de Peso ideal</h1>
                   <!-- Campo de entrada para la presión sistólica -->
-                   <h6>Rellene el formulario:</h6>
-                  <div class="mb-3">
-                    <label for="sexoPesoIdeal" class="form-label">Sexo</label>
-                    <select class="form-select" id="sexoPesoIdeal" required>
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="sexoPesoIdeal">
                       <option value="">Seleccione</option>
                       <option value="hombre">Hombre</option>
                       <option value="mujer">Mujer</option>
                     </select>
+                    <label for="sexoPesoIdeal" class="form-label">Sexo</label>
                   </div>
-                  <div class="mb-3">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="edadPesoIdeal">
                     <label for="edadPesoIdeal" class="form-label">Edad</label>
-                    <input type="number" class="form-control" id="edadPesoIdeal" required>
                   </div>
-                  <div class="mb-3">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="pesoIdeal">
                     <label for="pesoIdeal" class="form-label">Peso Actual (kg)</label>
-                    <input type="number" class="form-control" id="pesoIdeal" required>
                   </div>
-                  <div class="mb-3">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="alturaIdeal">
                     <label for="alturaIdeal" class="form-label">Altura (cm)</label>
-                    <input type="number" class="form-control" id="alturaIdeal" required>
                   </div>
                   <button type="submit" class="btn btn-primary btn-block">Calcular</button>
                   <div id="resultadoPesoIdeal" class="mt-4"></div>
                 </form>
               </div>
+            </div>
+            <div class="container">
+              <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                    <img src="img/aplicacion.png" alt="Aplicacion Nav">
+                      Aplicaciones Js
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#app_js_1">
+                      <img src="img/rango-de-edad.png" alt="Rango de edad">
+                      Categoria segun edad
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#app_js_2">
+                      <img src="img/limite-de-altura.png" alt="Peso Estatura">
+                      Calcular peso y estatura
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#app_js_3">
+                      <img src="img/imc.png" alt="IMC">
+                      Calculadora IMC
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#app_js_4">
+                      <img src="img/presion-arterial.png" alt="Presion Sistolica">
+                      Presion Sistolica
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#app_js_5">
+                      <img src="img/pesoIdeal.png" alt="Presion Sistolica">
+                      Calculadora Peso Ideal
+                    </a>
+                  </li>
+                </ul>
+                <p class="text-center text-body-secondary">&copy; 2024 Ing Alejandro Cossi - Todos los derechos reservados</p>
+                <div class="b-example-divider"></div>
+              </footer>
             </div>
           </div>
           <!-- Fin Contenedor -->

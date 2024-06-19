@@ -1,3 +1,9 @@
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
 // App Js 1
 function determinarCategoriaEdad() {
     // Obtener el valor de la edad ingresada por el usuario
@@ -92,7 +98,7 @@ function calcularIMCC() {
     // Verificar que los valores sean numericos y mayores que cero
     if (!isNaN(peso) && !isNaN(estatura) && peso > 0 && estatura > 0) {
         // Calcular el indice de masa corporal (IMC)
-        let imc = peso / (estatura * estatura);
+        let imc = peso / ((estatura/100) * (estatura/100));
 
         // Determinar la categoria de peso segun el IMC
         if (imc < 18.5) {

@@ -1,62 +1,75 @@
+// Agregar un evento de escucha para el envío del formulario
 document.getElementById('FormularioCalc').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Obtener valores
-    const sexoPesoIdeal = document.getElementById("sexoPesoIdeal").value;
-    const edadPesoIdeal = parseInt(document.getElementById("edadPesoIdeal").value);
-    const pesoIdeal = parseFloat(document.getElementById("pesoIdeal").value);
-    const alturaIdeal = parseFloat(document.getElementById("alturaIdeal").value);
+  event.preventDefault(); // Evita el comportamiento de envío predeterminado del formulario
 
-    // Calcular IMC utilizando la función proporcionada
-    const imcResultado = calcularIMC(pesoIdeal, alturaIdeal);
+  // Obtención de valores de los campos de entrada del formulario
+  const sexoPesoIdeal = document.getElementById("sexoPesoIdeal").value;
+  const edadPesoIdeal = parseInt(document.getElementById("edadPesoIdeal").value);
+  const pesoIdeal = parseFloat(document.getElementById("pesoIdeal").value);
+  const alturaIdeal = parseFloat(document.getElementById("alturaIdeal").value);
 
-    // Calcular peso ideal segun la formula de Lorentz
-    const pesoIdealResultado = calcularPesoIdeal(sexoPesoIdeal, alturaIdeal);
-    const calcularDiferencia = pesoIdeal - pesoIdealResultado;
+  // Verificación si alguno de los valores no es un número
+  if (isNaN(edadPesoIdeal) || isNaN(pesoIdeal) || isNaN(alturaIdeal)) {
+      // Mostrar un mensaje de error si alguno de los valores no es un número
+      document.getElementById("resultadoPesoIdeal").innerHTML = '<div class="alert alert-danger" role="alert"><i class="bi bi-exclamation-triangle-fill"></i> Por favor, llene todos los datos del formulario. <i class="bi bi-exclamation-triangle-fill"></i></div>';
+      return;
+  }
 
-    let mensaje;
-    if (calcularDiferencia > 0) {
-        mensaje = "perder";
-    } else {
-        mensaje = "ganar";
-    }
+  // Verificar si se ha seleccionado el sexo correctamente
+  if (sexoPesoIdeal !== "hombre" && sexoPesoIdeal !== "mujer") {
+      document.getElementById("resultadoPesoIdeal").innerHTML = '<div class="alert alert-danger" role="alert"><i class="bi bi-exclamation-triangle-fill"></i> Por favor, seleccione el sexo. <i class="bi bi-exclamation-triangle-fill"></i></div>';
+      return;
+  }
 
-    // Mostrar todos los resultados
-    document.getElementById("resultadoPesoIdeal").innerHTML = "<div class='alert alert-primary text-black' role='alert'><p>Edad: " + edadPesoIdeal + " años</p>" + "<p>Peso Actual: " + pesoIdeal + " kg</p>" + "<p>Altura: " + alturaIdeal + " cm</p>" + "<p>IMC: " + imcResultado + "</p>" + "<p>Peso Ideal: <span class='badge text-bg-success'>" + pesoIdealResultado + " kg </span></p>" + "<p>Deberias " + mensaje + ": <span class='badge text-bg-success'>" + calcularDiferencia + " kg</span</p>" + "</div>";
-});
+  // Calcular el IMC utilizando la función proporcionada calcularIMC
+  const imcResultado = calcularIMC(pesoIdeal, alturaIdeal);
 
-    function calcularIMC(pesoIdeal, estatura) {
-      if (!isNaN(pesoIdeal) && !isNaN(estatura) && pesoIdeal > 0 && estatura > 0) {
-        let imcVar = pesoIdeal / (estatura * estatura / 10000);
-        let resultadoImc = "";
+  // Calcular el peso ideal utilizando la fórmula de Lorentz
+  const pesoIdealResultado = calcularPesoIdeal(sexoPesoIdeal, alturaIdeal);
+  const calcularDiferencia = pesoIdeal - pesoIdealResultado;
 
-        if (imcVar < 18.5) {
-          resultadoImc = "<span class='badge text-bg-warning'>Bajo Peso</span>";
-        } else if (imcVar >= 18.5 && imcVar <= 24.9) {
-          resultadoImc = "<span class='badge text-bg-success'>Peso Normal</span>";
-        } else if (imcVar >= 25 && imcVar <= 29.9) {
-          resultadoImc = "<span class='badge text-bg-warning'>Sobrepeso</span>";
-        } else if (imcVar >= 30 && imcVar <= 34.9) {
-          resultadoImc = "<span class='badge text-bg-danger'>Obesidad I</span>";
-        } else if (imcVar >= 35 && imcVar <= 39.9) {
-          resultadoImc = "<span class='badge text-bg-danger'>Obesidad II</span>";
-        } else if (imcVar >= 40 && imcVar <= 49.9) {
-          resultadoImc = "<span class='badge text-bg-danger'>Obesidad III</span>";
-        } else {
-          resultadoImc = "<span class='badge text-bg-danger'>Obesidad IV</span>";
-        }
+  let mensaje;
+  if (calcularDiferencia > 0) {
+      mensaje = "perder";
+  } else {
+      mensaje = "ganar";
+  }
 
+  // Mostrar todos los resultados calculados
+  document.getElementById("resultadoPesoIdeal").innerHTML = "<div class='alert alert-info' role='alert'><p>Edad: " + edadPesoIdeal + " años</p>" + "<p>Peso Actual: " + pesoIdeal + " kg</p>" + "<p>Altura: " + alturaIdeal + " cm</p>" + "<p>IMC: <b>" + imcResultado + "</b></p>" + "<p>Peso Ideal: <span class='badge text-bg-success'>" + pesoIdealResultado.toFixed(2) + " kg </span></p>" + "<p>Deberías " + mensaje + ": <span class='badge text-bg-success'>" + Math.abs(calcularDiferencia).toFixed(2) + " kg</span></p>" + "</div>";
+  
+  // Función para calcular el IMC
+  function calcularIMC(peso, altura) {
+      if (!isNaN(peso) && !isNaN(altura) && peso > 0 && altura > 0) {
+          let imc = peso / ((altura/100) * (altura/100));
+          let resultadoImc = "";
 
-        return imcVar.toFixed(2) + " " + resultadoImc;
+          if (imc < 18.5) {
+              resultadoImc = "<span class='badge text-bg-warning'>Bajo Peso</span>";
+          } else if (imc >= 18.5 && imc <= 24.9) {
+              resultadoImc = "<span class='badge text-bg-success'>Peso Normal</span>";
+          } else if (imc >= 25 && imc <= 29.9) {
+              resultadoImc = "<span class='badge text-bg-warning'>Sobrepeso</span>";
+          } else if (imc >= 30 && imc <= 34.9) {
+              resultadoImc = "<span class='badge text-bg-danger'>Obesidad I</span>";
+          } else if (imc >= 35 && imc <= 39.9) {
+              resultadoImc = "<span class='badge text-bg-danger'>Obesidad II</span>";
+          } else if (imc >= 40) {
+              resultadoImc = "<span class='badge text-bg-danger'>Obesidad III</span>";
+          }
+
+          return imc.toFixed(2) + " " + resultadoImc;
       }
-    }
+  }
 
-    function calcularPesoIdeal(sexoPesoIdeal, alturaIdeal) {
+  // Función para calcular el peso ideal basado en el sexo y altura
+  function calcularPesoIdeal(sexo, altura) {
       let pesoIdeal;
-      if (sexoPesoIdeal === "hombre") {
-        pesoIdeal = (alturaIdeal - 100) - ((alturaIdeal - 150) / 4);
-      } else if (sexoPesoIdeal === "mujer") {
-        pesoIdeal = (alturaIdeal - 100) - ((alturaIdeal - 150) / 2);
+      if (sexo === "hombre") {
+          pesoIdeal = (altura - 100) - ((altura - 150) / 4);
+      } else if (sexo === "mujer") {
+          pesoIdeal = (altura - 100) - ((altura - 150) / 2);
       }
       return pesoIdeal;
-    }
+  }
+});

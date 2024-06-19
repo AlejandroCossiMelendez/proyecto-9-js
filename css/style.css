@@ -10,3 +10,7 @@
   .bd-mode-toggle .dropdown-menu .active .bi {
 	display: block !important;
   }
+  .b-example-divider {
+    width: 100%;
+    height: 3rem;
+  }
